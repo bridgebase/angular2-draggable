@@ -227,9 +227,6 @@ export class AngularDraggableDirective implements OnInit {
 
   @HostListener('touchstart', ['$event'])
   onTouchStart(event: any) {
-    event.stopPropagation();
-    event.preventDefault();
-
     if (this.handle !== undefined && event.target !== this.handle) {
       return;
     }
@@ -240,8 +237,6 @@ export class AngularDraggableDirective implements OnInit {
 
   @HostListener('document:touchmove', ['$event'])
   onTouchMove(event: any) {
-    event.stopPropagation();
-    event.preventDefault();
     if (this.moving && this.allowDrag) {
       this.moveTo(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
     }
